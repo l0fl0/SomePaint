@@ -64,7 +64,7 @@ class Root {
             ctx.fill();
             ctx.strokeStyle = `hsl(${this.hue},${this.satutation - 30}% ,${this.lightness - 30}%)`;
             ctx.stroke();
-            colorChromatic.style.background = `hsl(${hue},${saturation}%,${lightness - 30}%)`;
+            colorChromatic.style.background = `hsl(${hue },${saturation}%,${lightness - 30}%)`;
         }
     }
 };
@@ -97,7 +97,7 @@ class Normal {
             ctx.strokeStyle = `hsl(${this.hue},${this.satutation}% ,${this.lightness}%)`;
             ctx.fill();
             ctx.stroke();
-            colorChromatic.style.background = `hsl(${hue + 15},${saturation}%,${lightness - 30}%)`;
+            colorChromatic.style.background = `hsl(${hue},${saturation}%,${lightness}%)`;
         }
     }
 };
@@ -106,7 +106,7 @@ stroke = () => {
     if (drawing && rootBrush) {
         const centerX = mouse.x;
         const centerY = mouse.y;
-        for (let i = 0; i < 1; i++) {
+        for (let i = 0; i < 3; i++) {
             const root = new Root(mouse.x, mouse.y, hue, saturation, lightness, centerX, centerY);
             root.draw();
         }
@@ -158,7 +158,7 @@ const rootBrushButton = document.getElementById('rootBrushButton');
 const normalBrushButton = document.getElementById('normalBrushButton');
 const normalBrushToggle = document.getElementById('normalBrushToggle');
 const rootBrushToggle = document.getElementById('rootBrushToggle');
-
+const brushSize = document.getElementById('brushSize'); 
 
 rootToggle = () => {
     normalBrush = false;
@@ -178,6 +178,13 @@ normalToggle = () => {
     rootBrushButton.style.background = 'crimson';
 };
  
+sliderInput = () => {
+    edge = brushSize.value;
+    const brushSizeDisplay = document.getElementById('brushSizeDisplay');
+    brushSizeDisplay.innerText = `Brush Size: ${edge}`
+}
+
+brushSize.addEventListener('change', sliderInput);
 rootBrushButton.addEventListener('click', rootToggle);
 normalBrushButton.addEventListener('click', normalToggle);
 
