@@ -114,9 +114,12 @@
 #normalBrushButton {
     background: green;
 }
-.brushSize {
+.sizeContainer {
+    text-align: center;
+    color: #fff;
+    font-size: 1.5rem;
     grid-row: 2;
-    grid-column: span 2;
+    grid-column: span 3;
 }
 
 /*  Size slider */
